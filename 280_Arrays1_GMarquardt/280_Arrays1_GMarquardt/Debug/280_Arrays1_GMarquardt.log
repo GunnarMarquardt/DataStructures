@@ -1,2 +1,3 @@
 ﻿  280_Arrays1_GMarquardt.cpp
-  280_Arrays1_GMarquardt.vcxproj -> C:\Users\Gunnar\Documents\Data Structures\280_Arrays1_GMarquardt\Debug\280_Arrays1_GMarquardt.exe
+C:\Users\Gunnar\Documents\Data Structures\DataStructures\280_Arrays1_GMarquardt\280_Arrays1_GMarquardt\280_Arrays1_GMarquardt.cpp(97,9): warning C4244:  'return': conversion from 'double' to 'int', possible loss of data
+  280_Arrays1_GMarquardt.vcxproj -> C:\Users\Gunnar\Documents\Data Structures\DataStructures\280_Arrays1_GMarquardt\Debug\280_Arrays1_GMarquardt.exe
