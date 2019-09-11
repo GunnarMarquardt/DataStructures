@@ -117,6 +117,7 @@ void sort(int a[], int c)
 int main()
 {
 	int array[] = {0,0,0,0,0,0,0,0,0,0}, choice, count = 0, n, v;
+	string input;
 	bool done = false;
 	do
 	{
