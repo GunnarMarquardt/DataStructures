@@ -204,36 +204,16 @@ Complex operator * (const Complex c1, const Complex c2)
 
 int main()
 {
-	Complex c1 = Complex(1, -1);
-	cout << "c1: " << c1 << endl;
-	Complex c2 = Complex(3, -4);
-	cout << "c2: " << c2 << endl;
-	c1 = Complex();
-	c1.load();
-	cout << "c1: " << c1 << endl;
-	cout << "Enter real coefficient and imaginary coefficient: " << endl;
-	cin >> c2;
-	cout << "c2: " << c2 << endl;
-	cout << c1.getReal() << " " << c1.getImaginary() << endl;
-	c1.set(1, -1);
-	c2.setReal(3);
-	c2.setImaginary(-4);
-	cout << c1.equal(c2) << endl;
-	cout << equal(c1, c2) << endl;
-	cout << (c1 == c2) << endl;
-	c1.add(c2);
-	cout << add(c1, c2) << endl;
-	cout << (c1 + c2) << endl;
-	c1.sub(c2);
-	cout << sub(c1, c2) << endl;
-	cout << (c1 - c2) << endl;
-	c1.mult(c2);
-	cout << mult(c1, c2) << endl;
-	cout << (c1 * c2) << endl;
+	Complex c1 = Complex();
 	c1.display();
-	Complex c3 = add(c1, c2);
-	c3.display();
-	Complex c4 = c1 + c2;
-	c4.display();
+	c1 = Complex(1, 2);
+	c1.display();
+	c1.load();
+	c1.display();
+	cout << "enter components" << endl;
+	Complex c2;
+	cin >> c2;
+	cout << c2 << endl;
+
 } //main
 
