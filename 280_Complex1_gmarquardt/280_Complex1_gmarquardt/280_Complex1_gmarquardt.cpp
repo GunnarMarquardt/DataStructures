@@ -214,6 +214,18 @@ int main()
 	Complex c2;
 	cin >> c2;
 	cout << c2 << endl;
-
+	cout << "c1: " << c1.getReal() << " " << c1.getImaginary() << endl;
+	c2.set(3, 4);
+	c1.setReal(5);
+	c1.setImaginary(6);
+	cout << "c1: " << c1 << endl;
+	cout << "c2: " << c2 << endl;
+	cout << c1.equal(c2) << endl << equal(c1, c1) << endl << (c2 == c2) << endl;
+	c1.add(c2);
+	c1.sub(c2);
+	cout << add(c1, c2) << endl << (c1 + c2) << endl;
+	cout << sub(c1, c2) << endl << (c1 - c2) << endl;
+	cout << mult(c1, c2) << endl << (c1 * c2) << endl;
+	c1.mult(c2);
 } //main
 
