@@ -32,7 +32,7 @@ public:
 	void display();
 	void load();
 	friend ostream& operator << (ostream&, const Complex);
-	friend istream& operator >> (istream&, Complex);
+	friend istream& operator >> (istream&, Complex&);
 
 	//arithmetic
 	void add(Complex);
@@ -49,39 +49,39 @@ public:
 Complex::Complex() 
 {
 	realCoef = imaginaryCoef = 0;
-} //Complex
+}
 
 Complex::Complex(double r, double i) 
 {
 	realCoef = r;  imaginaryCoef = i;
-} //Complex
+}
 
 //getters
 double Complex::getReal()
 {
 	return realCoef;
-} //getReal
+}
 
 double Complex::getImaginary()
 {
 	return imaginaryCoef;
-} //getImaginary
+}
 
 //setters
 void Complex::set(double r, double i) 
 {
 	realCoef = r;  imaginaryCoef = i;
-} //set
+}
 
 void Complex::setReal(double r)
 {
 	realCoef = r;
-} //setReal
+}
 
 void Complex::setImaginary(double i)
 {
 	imaginaryCoef = i;
-} //setImaginary
+}
 
 
 //utility
@@ -92,7 +92,7 @@ bool Complex::equal(const Complex c)
 		return true;
 	}
 	return false;
-} // equal
+}
 
 bool equal(const Complex c1, const Complex c2)
 {
@@ -101,18 +101,18 @@ bool equal(const Complex c1, const Complex c2)
 		return true;
 	}
 	return false;
-} // equal friend
+}
 
 bool operator == (const Complex c1, const Complex c2)
 {
 	return equal(c1, c2);
-} // ==
+}
 
 void Complex::load() 
 {
 	cout << "Enter real coefficient and imaginary coefficient: ";
 	cin >> realCoef >> imaginaryCoef;
-} // load
+}
 
 void Complex::display()
 {
@@ -120,7 +120,7 @@ void Complex::display()
 	if (imaginaryCoef >= 0) cout << " + " << imaginaryCoef;
 	else cout << " - " << -imaginaryCoef;
 	cout << "i" << endl;
-} //display
+}
 
 
 ostream& operator << (ostream& os, const Complex c)
@@ -136,20 +136,20 @@ ostream& operator << (ostream& os, const Complex c)
 	}
 	os << "i";
 	return os;
-} //<<
+}
 
-istream& operator >> (istream& is, Complex c)
+istream& operator >> (istream& is, Complex& c)
 {
 	is >> c.realCoef >> c.imaginaryCoef;
 	return is;
-} //>>
+}
 
 //math
 void Complex::add(const Complex c) 
 {
 	realCoef += c.realCoef;
 	imaginaryCoef += c.imaginaryCoef;
-} //add
+}
 
 Complex add(const Complex c1, const Complex c2) 
 {
@@ -157,18 +157,18 @@ Complex add(const Complex c1, const Complex c2)
 	t.realCoef = c1.realCoef + c2.realCoef;
 	t.imaginaryCoef = c1.imaginaryCoef + c2.imaginaryCoef;
 	return t;
-} //add friend
+}
 
 Complex operator + (const Complex c1, const Complex c2)
 {
 	return add(c1, c2);
-} //+
+}
 
 void Complex::sub(const Complex c)
 {
 	realCoef -= c.realCoef;
 	imaginaryCoef -= c.imaginaryCoef;
-} //sub
+}
 
 Complex sub(const Complex c1, const Complex c2)
 {
@@ -176,18 +176,20 @@ Complex sub(const Complex c1, const Complex c2)
 	t.realCoef = c1.realCoef - c2.realCoef;
 	t.imaginaryCoef = c1.imaginaryCoef - c2.imaginaryCoef;
 	return t;
-} //sub friend
+}
 
 Complex operator - (const Complex c1, const Complex c2)
 {
 	return sub(c1, c2);
-} //-
+}
 
 void Complex::mult(const Complex c)
 {
-	realCoef = realCoef * c.realCoef - imaginaryCoef * c.imaginaryCoef;
+	double temp;
+	temp = realCoef * c.realCoef - imaginaryCoef * c.imaginaryCoef;
 	imaginaryCoef = realCoef * c.imaginaryCoef + imaginaryCoef * c.realCoef;
-} //mult
+	realCoef = temp;
+}
 
 Complex mult(const Complex c1, const Complex c2)
 {
@@ -195,37 +197,61 @@ Complex mult(const Complex c1, const Complex c2)
 	t.realCoef = c1.realCoef * c2.realCoef - c1.imaginaryCoef * c2.imaginaryCoef;
 	t.imaginaryCoef = c1.realCoef * c2.imaginaryCoef + c2.realCoef * c1.imaginaryCoef;
 	return t;
-} //mult friend
+}
 
 Complex operator * (const Complex c1, const Complex c2)
 {
 	return mult(c1, c2);
-} // *
+}
 
 int main()
 {
-	Complex c1 = Complex();
+	Complex c1 = Complex(), c2 = Complex();
+	
+	//setters getters io and initialization
+	cout << "Setters Getters IO and Initilization" << endl;
+	cout << "c1: ";
 	c1.display();
-	c1 = Complex(1, 2);
-	c1.display();
-	c1.load();
-	c1.display();
-	cout << "enter components" << endl;
-	Complex c2;
-	cin >> c2;
-	cout << c2 << endl;
-	cout << "c1: " << c1.getReal() << " " << c1.getImaginary() << endl;
-	c2.set(3, 4);
-	c1.setReal(5);
-	c1.setImaginary(6);
-	cout << "c1: " << c1 << endl;
 	cout << "c2: " << c2 << endl;
-	cout << c1.equal(c2) << endl << equal(c1, c1) << endl << (c2 == c2) << endl;
+	c1.load();
+	cout << "c1: " << c1 << endl;
+	cout << "Enter values for c2" << endl;
+	cin >> c2;
+	cout << "c2: " << c2 << endl << endl;
+	c1.set(1, 2);
+	c2.setReal(3);
+	c2.setImaginary(4);
+	cout << "c1: " << c1 << endl << "c2: " << c2 << endl;
+	cout << "c1 real coefficient: " << c1.getReal() << endl << "c1 imaginary coefficient: " << c1.getImaginary() << endl << endl;
+
+	//addition
+	cout << "Addition" << endl;
 	c1.add(c2);
+	cout << "c1.add(c2): " << c1 << endl;
 	c1.sub(c2);
-	cout << add(c1, c2) << endl << (c1 + c2) << endl;
-	cout << sub(c1, c2) << endl << (c1 - c2) << endl;
-	cout << mult(c1, c2) << endl << (c1 * c2) << endl;
+	cout << "add(c1, c2): " << add(c1, c2) << endl;
+	cout << "c1 + c2: " << (c1 + c2) << endl << endl;
+
+	//subtraction
+	cout << "Subtraction" << endl;
+	c1.sub(c2);
+	cout << "c1.sub(c2): " << c1 << endl;
+	c1.add(c2);
+	cout << "sub(c1, c2): " << sub(c1, c2) << endl;
+	cout << "c1 - c2: " << (c1 - c2) << endl << endl;
+
+	//multiplication
+	cout << "Multiplication" << endl;
 	c1.mult(c2);
-} //main
+	cout << "c1.mult(c2): " << c1 << endl;
+	c1.set(1, 2);
+	cout << "mult(c1, c2): " << mult(c1, c2) << endl;
+	cout << "c1 * c2: " << (c1 * c2) << endl << endl;
+
+	//Equality
+	cout << "Equality" << endl;
+	cout << "c1.equal(c2): " << c1.equal(c2) << endl;
+	cout << "equal(c1, c1): " << equal(c1, c1) << endl;
+	cout << "c2 == c2: " << (c2 == c2) << endl;
+}
 
