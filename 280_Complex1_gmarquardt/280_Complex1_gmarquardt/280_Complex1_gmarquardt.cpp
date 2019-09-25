@@ -254,4 +254,3 @@ int main()
 	cout << "equal(c1, c1): " << equal(c1, c1) << endl;
 	cout << "c2 == c2: " << (c2 == c2) << endl;
 }
-
